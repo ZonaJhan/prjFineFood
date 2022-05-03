@@ -1,0 +1,87 @@
+﻿@model IEnumerable<prjFineFoodCore.ViewModel.CMemberViewModel>
+
+@{
+    ViewData["Title"] = "會員資料一覽";
+    Layout = "_LayoutAdmin";
+}
+
+@section Scripts{
+
+}
+
+<div class="container">
+    <main>
+        <h1>會員資料一覽</h1>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        序號
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Account)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Password)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BirthDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MemberPhoto)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RegistrationDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ViplevelId)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    int count = 0;
+                    foreach (var item in Model)
+                    {
+                        count++;
+                        <tr>
+                            <td>
+                                @count
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Account)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Password)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BirthDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Phone)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.RegistrationDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ViplevelId)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.MemberId }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.MemberId })
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </main>
+</div>

@@ -1,0 +1,190 @@
+﻿@model IEnumerable<prjMVCCoreClass.Models.CShoppingCartItem>
+
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+@section CSS {
+    <style>
+
+        .pcontainer {
+            text-align: center;
+        }
+
+        .body-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 20vh;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        .progress-container {
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-bottom: 30px;
+            max-width: 100%;
+            width: 1200px;
+        }
+
+            .progress-container::before {
+                content: " ";
+                background-color: var(--line-border-empty);
+                height: 4px;
+                width: 100%;
+                position: absolute;
+                top: 50%;
+                left: 0;
+                transform: translateY(-50%);
+                z-index: -1;
+            }
+
+        .progress {
+            background-color: var(--line-border-fill);
+            height: 4px;
+            width: 34%;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            z-index: -1;
+        }
+
+        .circle {
+            background-color: #fff;
+            color: #999;
+            border: 3px solid #999;
+            border-radius: 50%;
+            height: 90px;
+            width: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+            .circle.active {
+                border-color: var(--line-border-fill);
+                color: var(--line-border-fill);
+            }
+    </style>
+
+}
+
+
+
+
+<div class="container">
+    <main>
+        <div class="body-container">
+            <div class="pcontainer">
+                <div class="progress-container">
+                    <div class="progress" id="progress"></div>
+                    <div class="circle active">購物車</div>
+                    <div class="circle active">訂單資料</div>
+                    <div class="circle">訂單付款</div>
+                    <div class="circle">完成訂單</div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <h4>訂單資料</h4>
+        <hr />
+        <form asp-action="CreateOrder">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" />
+            <div class="row">
+                <div class="col-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">付款人資料</h5>
+                            <div class="form-group">
+                                <label class="control-label">付款人姓名</label>
+                                <input readonly class="form-control" value="楊曉華" />
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">付款人電話</label>
+                                <input readonly class="form-control" value="0921964758" />
+                            </div>
+                        </div>
+                    </div>
+                    <p></p>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">取件人資料</h5>
+                            <div class="row">
+                                <div class="form-group col">
+                                    <label class="control-label">取件人姓名</label>
+                                    <input class="form-control" value="楊曉華" />
+                                    <span class="text-danger"></span>
+                                </div>
+                                <div class="form-group col">
+                                    <label class="control-label">取件人電話</label>
+                                    <input class="form-control" value="0921964758" />
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-4">
+                    <div class="card" style="background-color: #f8f9fa">
+                        <input type="hidden" />
+                        <div class="card-body">
+                            <h5 class="card-title">訂單內容</h5>
+                            <table class="table table-borderless">
+                                <thead>
+                                    <tr>
+                                        <th>商品名稱</th>
+                                        <th>小計</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+                                        decimal total = 0;
+                                        foreach (var item in Model)
+                                        {
+                                            total += item.小計;
+                                            <tr>
+                                                <td>@item.food.FoodName</td>
+                                                <td>@item.小計</td>
+                                            </tr>
+                                        }
+                                    }
+
+                                </tbody>
+                            </table>
+                            <hr />
+                            <div class="text-right">
+                                <input type="hidden" />
+                                <p class="card-text font-weight-bolder" style="padding-right:12px">總計: $ @total</p>
+                            </div>
+                            <p></p>
+                            <div class="text-center card-link">
+                                <button class="btn btn-outline-dark"
+                                        type="button"
+                                        onclick="location.href='@Url.Action("ReviewOrder", "Order")'">
+                                    確認付款
+                                </button>
+                                <button class="btn btn-outline-danger" asp-controller="PlaceOrder" asp-action="CartView"><i class="fas fa-angle-left"></i> 返回購物車</button>
+                                @*<button type="submit" class="btn btn-success w-75">建立訂單</button>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <p></p>
+        
+    </main>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

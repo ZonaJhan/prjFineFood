@@ -1,0 +1,46 @@
+﻿@using Microsoft.AspNetCore.Http
+
+@{
+    ViewBag.Title = "購物車";
+}
+
+@section Scripts{
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}
+
+<div class="container">
+    <main>
+
+        <h2>購物車</h2>
+
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <input type="hidden" value="@ViewBag.Fid" name="txtFoodId" />
+                <div class="form-group">
+                    輸入購買數量
+                    <p>
+                        @Html.TextBox("txtCount", "1", new { @class = "form-control" })
+                    </p>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-offset-2 col-md-10" style="margin-bottom:10px">
+                            <input type="submit" value="購買" class="btn btn-outline-primary" />
+                            @Html.ActionLink("取消", "RestaurantMenu", new { id = ViewBag.RestId }, new { @class = "btn btn-outline-primary" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </main>
+</div>

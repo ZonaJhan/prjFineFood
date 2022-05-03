@@ -1,0 +1,50 @@
+﻿@model prjFineFoodCore.Models.PocketList
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="container">
+    <main>
+        <h1>Edit</h1>
+        <h4>PocketList</h4>
+        <hr />
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="PocketListId" class="control-label"></label>
+                        <input asp-for="PocketListId" class="form-control" />
+                        <span asp-validation-for="PocketListId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PocketListName" class="control-label"></label>
+                        <input asp-for="PocketListName" class="form-control" />
+                        <span asp-validation-for="PocketListName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MemberId" class="control-label"></label>
+                        <input asp-for="MemberId" class="form-control" />
+                        <span asp-validation-for="MemberId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="IsPublic" /> @Html.DisplayNameFor(model => model.IsPublic)
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <a asp-action="PocketList">Back to List</a>
+        </div>
+    </main>
+</div>
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

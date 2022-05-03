@@ -1,0 +1,113 @@
+﻿@model prjFineFoodCore.ViewModel.CRestaurantViewModel
+
+@{
+    ViewData["Title"] = "RestaurantEdit";
+}
+
+<h1>RestaurantEdit</h1>
+
+<h4>CRestaurantViewModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="RestaurantEdit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group" hidden>
+                <label asp-for="RestaurantId" class="control-label"></label>
+                <input asp-for="RestaurantId" class="form-control" />
+                <span asp-validation-for="RestaurantId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RestaurantAccount" class="control-label"></label>
+                <input asp-for="RestaurantAccount" class="form-control" />
+                <span asp-validation-for="RestaurantAccount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ZipCode" class="control-label"></label>
+                <input asp-for="ZipCode" class="form-control" />
+                <span asp-validation-for="ZipCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RestaurantName" class="control-label"></label>
+                <input asp-for="RestaurantName" class="form-control" />
+                <span asp-validation-for="RestaurantName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Photos" class="control-label"></label>
+                <input type="file" name="Photo" class="form-control" />
+                <span asp-validation-for="Photos" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WeekDayOff" class="control-label"></label>
+                <input asp-for="WeekDayOff" class="form-control" />
+                <span asp-validation-for="WeekDayOff" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OpenTime" class="control-label"></label>
+                <input asp-for="OpenTime" class="form-control" />
+                <span asp-validation-for="OpenTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CloseTime" class="control-label"></label>
+                <input asp-for="CloseTime" class="form-control" />
+                <span asp-validation-for="CloseTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Latitude" class="control-label"></label>
+                <input asp-for="Latitude" class="form-control" />
+                <span asp-validation-for="Latitude" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Longitude" class="control-label"></label>
+                <input asp-for="Longitude" class="form-control" />
+                <span asp-validation-for="Longitude" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="OrderAvailable" /> @Html.DisplayNameFor(model => model.OrderAvailable)
+                </label>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="RegistrationDate" class="control-label"></label>
+                <input asp-for="RegistrationDate" class="form-control" />
+                <span asp-validation-for="RegistrationDate" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Activited" /> @Html.DisplayNameFor(model => model.Activited)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="RestaurantList">回到總覽</a>
+</div>
+
+@section Scripts {
+    
+}

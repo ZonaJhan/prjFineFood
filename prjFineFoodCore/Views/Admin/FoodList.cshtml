@@ -1,0 +1,72 @@
+﻿@model IEnumerable<prjFineFoodCore.ViewModel.CFoodViewModel>
+
+@{
+    ViewData["Title"] = "餐點總覽";
+    Layout = "_LayoutAdmin";
+}
+
+@section Scripts{
+
+}
+
+<div class="container">
+    <main>
+        <h1>餐點總覽</h1>
+
+        <p>
+            <a asp-action="FoodCreate">新增餐點</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        序號
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FoodName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Price)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Photo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Available)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    int count = 0;
+                    foreach (var item in Model)
+                    {
+                        count++;
+                        <tr>
+                            <td>
+                                @count
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FoodName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Price)
+                            </td>
+                            <td>
+                                <img src="~/Images/Foods/@item.Photo" class="img-thumbnail shadow-4"  style="width:50px" alt="..." />
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Available)
+                            </td>
+                            <td>
+                                @Html.ActionLink("編輯", "FoodEdit", new { id = item.FoodId }) |
+                                @Html.ActionLink("刪除", "FoodDelete", new { id = item.FoodId })
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </main>
+</div>

@@ -1,0 +1,115 @@
+﻿@model IEnumerable<prjFineFoodCore.Models.PocketList>
+
+@{
+    ViewData["Title"] = "Search";
+    Layout = "_LayoutPockSearch";
+}
+@section CSS{
+    <style>
+        .outside {
+            border: 1px solid black;
+            height: 270px;
+            border-radius: 30px;
+            margin: 20px;
+        }
+
+        .imgdv {
+            border: 1px solid black;
+            border-radius: 30px;
+            margin: 10px;
+            height: 250px;
+            width: 450px;
+            float: left;
+        }
+
+        .detaildiv {
+            margin: 30px;
+        }
+
+        .hr {
+            width: 500px;
+        }
+    </style>
+}
+
+@*<p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.PocketListId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PocketListName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MemberId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsPublic)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PocketListId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PocketListName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MemberId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsPublic)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>*@
+<div class="container">
+    <main>
+        @*<div style="margin:30px;border:3px solid black">
+            <p>這邊是搜尋</p>
+            <p>關鍵字搜尋(風格)</p>
+            <input type="text" id="txtSearch" />
+            <p>關鍵字搜尋(餐廳)</p>
+            <input type="text" id="txtSearch" />
+            <p>關鍵字搜尋(餐點)</p>
+            <input type="text" id="txtSearch" />
+        </div>*@
+        <h1>Search</h1>
+        <h1>是我測試</h1>
+        @for (int i = 1; i < 8; i++)
+        {
+    <div class="outside">
+        <div class="imgdv">
+            <img src="#" />
+        </div>
+        <div>
+            <p class="detaildiv">餐廳名稱: a+@i</p>
+        </div>
+        <div>
+            <p class="detaildiv">電話: a+@i</p>
+        </div>
+        <div>
+            <p class="detaildiv">地址: a+@i</p>
+        </div>
+        <div>
+            <p class="detaildiv">營業時間: a+@i</p>
+        </div>
+    </div>
+            <hr />
+        }
+    </main>
+</div>

@@ -1,0 +1,165 @@
+﻿@model IEnumerable<prjMVCCoreClass.Models.CShoppingCartItem>
+
+@{
+    ViewData["Title"] = "CartView";
+}
+
+@section CSS{
+    <style>
+
+        .pcontainer {
+            text-align: center;
+        }
+
+        .body-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 20vh;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        .progress-container {
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-bottom: 30px;
+            max-width: 100%;
+            width: 1200px;
+        }
+
+            .progress-container::before {
+                content: " ";
+                background-color: var(--line-border-empty);
+                height: 4px;
+                width: 100%;
+                position: absolute;
+                top: 50%;
+                left: 0;
+                transform: translateY(-50%);
+                z-index: -1;
+            }
+
+        .progress {
+            background-color: var(--line-border-fill);
+            height: 4px;
+            width: 0%;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            z-index: -1;
+        }
+
+        .circle {
+            background-color: #fff;
+            color: #999;
+            border: 3px solid #999;
+            border-radius: 50%;
+            height: 90px;
+            width: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+            .circle.active {
+                border-color: var(--line-border-fill);
+                color: var(--line-border-fill);
+            }
+    </style>
+}
+
+<div class="body-container">
+    <div class="pcontainer">
+        <div class="progress-container">
+            <div class="progress" id="progress"></div>
+            <div class="circle active">購物車</div>
+            <div class="circle">訂單資料</div>
+            <div class="circle">訂單付款</div>
+            <div class="circle">完成訂單</div>
+        </div>
+    </div>
+</div>
+
+<div class="card shadow rounded" style="margin:1%">
+    <h5 class="card-header">購物車</h5>
+    <div class="card-body">
+        @{
+            decimal total = 0;
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.food.FoodName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.count)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.price)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.小計)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        total += item.小計;
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.food.FoodName)
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(modelItem => item.count)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.price)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.小計)
+                            </td>
+                            <td>
+                                @Html.ActionLink("刪除", "CartViewDelete", new { id = item.foodId }, new { @class = "btn btn-outline-danger" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+
+            <hr />
+            <div class="row">
+                <div class="col-4 justify-content-around">
+                    <div class="input-group input-group-sm mb-2">
+                        <span style="padding-top:3px">優惠碼：</span>
+                        <input type="text" class="form-control" placeholder="coupon" name="coupon">
+                    </div>
+                </div>
+                <div class="col text-right pr-5">
+                    <h5>總計： $@total</h5>
+                </div>
+
+            </div>
+        }
+
+    </div>
+</div>
+
+    <div class="row" style="margin:1px; padding:2px">
+        <div class="col-10">
+        </div>
+        <div class="col-2" style="margin-bottom:10px">
+                <a class="btn btn-outline-secondary" style="margin-right:10px" asp-controller="PlaceOrder" asp-action="RestaurantMenu" asp-route-id="@ViewBag.RestId">繼續購物</a>
+                <a class="btn btn-outline-secondary" style="margin-left:10px" asp-controller="Order" asp-action="Checkout">前往結帳</a>
+        </div>
+    </div>
+
+@section Scripts{
+
+}

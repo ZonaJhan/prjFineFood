@@ -1,0 +1,60 @@
+﻿@model IEnumerable<prjFineFoodCore.ViewModel.CAreaViewModel>
+
+@{
+    ViewData["Title"] = "CityList";
+    Layout = "_LayoutAdmin";
+}
+
+@section Scripts{
+
+}
+
+<div class="container">
+    <main>
+        <h1>城市一覽表</h1>
+
+        <p>
+            <a asp-action="Create">新增城市</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        序號
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.City1)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CityPhoto)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @{
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CityId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.City1)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CityPhoto)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </main>
+</div>

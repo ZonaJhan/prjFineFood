@@ -1,0 +1,92 @@
+﻿@model prjFineFoodCore.Models.PocketListDetail
+
+@{
+    ViewData["Title"] = "Details";
+}
+@section CSS{ 
+<style>
+    .outside {
+        border: 1px solid black;
+        height: 270px;
+        border-radius: 30px;
+        margin: 20px;
+    }
+    .imgdv {
+        border: 1px solid black;
+        border-radius: 30px;
+        margin:10px;
+        height:250px;
+        width:450px;
+        float:left;
+    }
+    .detaildiv{
+        margin:20px;
+    }
+    .hr{
+        width:600px;
+    }
+
+</style>
+}
+
+
+<h1 style="text-align:center;margin:20px">餐廳資訊</h1>
+
+<div class="container">
+    <main>
+        @*<div>
+            <h4>PocketListDetail</h4>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.PocketListDetailId)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.PocketListDetailId)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.PocketListId)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.PocketListId)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.CityId)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.CityId)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.RestaurantId)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.RestaurantId)
+                </dd>
+            </dl>
+        </div>
+        <div>
+            @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+            <a asp-action="Index">Back to List</a>
+        </div>*@
+        @for (int i = 1; i < 8; i++)
+        {
+            <div class="outside">
+                <div class="imgdv">
+                    <img src="#" />
+                </div>
+                <p class="detaildiv">餐廳名稱: a+@i</p>
+                <hr class="hr"/> 
+                <p class="detaildiv">電話: a+@i</p>
+                <hr class="hr"/>
+                <p class="detaildiv">地址: a+@i</p>
+                <hr class="hr"/>
+                <p class="detaildiv">營業時間: a+@i</p>
+                <hr class="hr"/>
+            </div>
+            <hr />
+        }
+    </main>
+</div>
+
+
+        

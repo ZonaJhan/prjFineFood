@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewData["Title"] = "Bubble";
+}
+
+
+@section CSS{
+    <link href="~/css/leo/Bubbles.css" rel="stylesheet" />
+    @*<link href="~/css/Text.css" rel="stylesheet" />*@
+}
+<div>
+    @*<p>
+            <span style="--i:1;">I</span>
+            <span style="--i:2;">n</span>
+            <span style="--i:3;">d</span>
+            <span style="--i:4;">e</span>
+            <span style="--i:5;">x</span>
+        </p>*@
+    <section></section>
+</div>
+
+
+@section Scripts{
+    <script>
+        function createBubble() {
+            const section = document.querySelector('section');
+            const createElement = document.createElement('span');
+            var size = Math.random() * 60;
+
+            createElement.style.width = 20 + size + 'px';
+            createElement.style.height = 20 + size + 'px';
+            createElement.style.left = Math.random() * innerWidth + 'px';
+
+            createElement.style.zIndex = -1;
+
+            section.appendChild(createElement);
+            setTimeout(() => {
+                createElement.remove();
+            }, 4000)
+        }
+        setInterval(createBubble, 50)
+    </script>
+}

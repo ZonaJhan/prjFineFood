@@ -1,0 +1,146 @@
+﻿
+nav {
+    display: flex;
+    align-items: center;
+    /*flex-wrap: wrap;*/
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background-color: #F8F9FA;
+    height:3vw;
+    box-shadow: 3px 3px 5px 1px rgb(107, 107, 107);
+    /*font-size:1.5rem;*/
+    /*justify-content:space-around;*/
+}
+form {
+    display: flex;
+    flex-wrap: wrap;
+}
+nav form {
+    justify-content: space-between;
+    margin: 0px auto
+}
+label.navlab {
+    font-size: 1.5rem;
+    justify-content: space-between;
+    /*margin: 0px 20px;*/
+}
+#formsch {
+    margin: 10px 20px;
+    width: 100px;
+}
+.sel {
+    margin: 10px 20px;
+}
+select {
+width:150px;
+}
+section.cards {
+    display: flex;
+}
+div.img_container {
+    overflow: hidden;
+    /*height: 15vw;
+    width: 15vw;*/
+}
+img.mypic {
+    
+    /*height:15vw;
+    width:15vw;*/
+    transition:0.2s;
+    
+}
+.img_container img:hover {
+transform:scale(1.1);
+}
+.tryone {
+    background-color: peachpuff;
+}
+/*cities*/
+.cities {
+    box-sizing: border-box;
+    display: block;
+}
+.cityh2 {
+    position: relative;
+    width: 100%;
+    max-width: 1425px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+
+/*piclink*/
+.cardbox {
+    /*margin-bottom: -24px;
+    margin-right: 12px;
+    margin-left: 12px;*/
+    flex-wrap: nowrap;
+    box-sizing: border-box;
+    display: flex;
+    width: 90vw;
+    margin: 0px auto
+    /*margin: 10px 10px 0px 10px;*/
+    
+}
+.choseCard {
+    margin: 10px;
+    margin-left: 0%;
+    padding-right: 12px;
+    padding-left: 12px;
+    width: 33.333333333333336%;
+    display: block;
+    flex: none;
+    margin-bottom: 24px;
+    box-sizing: border-box;
+}
+.cardpicbox {
+    background-color: #E2E2E2;
+    padding-top: 55.970149253731336%;
+    width: 100%;
+    margin-bottom: 8px;
+    height: 0;
+    position: relative;
+    display: block;
+}
+.carpicindbox {
+    display: block;
+}
+.cardimg {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height:16vw;
+}
+
+
+@media screen and (max-width:850px) {
+    div .mycard {
+       width:50vw;
+
+    }
+}
+
+@media screen and (max-width:850px) {
+    nav {
+        flex-direction: column;
+    }
+    form {
+    flex-direction:column;
+    }
+}
+@media screen and (max-width:1248px) {
+    nav {
+        /*flex-direction: column;*/
+        height: auto;
+    }
+}
+@media (max-width: 479px) {
+    .cities .citylist {
+        padding-left: 24px;
+    }
+}
+
